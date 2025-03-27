@@ -116,17 +116,17 @@ const x:{[k:string]: string} = {}
 
 //*  Array Types
 
-/*
-// const fileExtensions = ["js", "ts"]
-//        ^? string[]
 
-// const cars = [ //? Let's look at an array of objects
-//     {
-//         make: "Toyota",
-//         model: "Corolla",
-//         year: 2002,
-//     },
-// ]
+const fileExtensions = ["js", "ts"]
+      //  ^? string[]
+
+const cars = [ //? Let's look at an array of objects
+    {
+        make: "Toyota",
+        model: "Corolla",
+        year: 2002,
+    },
+]
 
 
 //* Tuples
