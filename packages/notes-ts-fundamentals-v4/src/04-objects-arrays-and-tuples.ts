@@ -14,17 +14,27 @@ let car: {
 
 
 //? A function that prints info about a car to stdout
-function printCar(car: {
+function printCar(car?: {
     make: string
     model: string
     year: number
+    chargeVoltage?: number //? Optional property
 }) {
-    console.log(`${car.make} ${car.model} (${car.year})`)
+  if (!car) {
+    console.log("No car to print")
+    return
+  }
+  let str = `${car.make} ${car.model} (${car.year})`
+  car.chargeVoltage
+  if (typeof car.chargeVoltage === "number") {
+    str += `// ${car.chargeVoltage}v`
+  }
+  console.log(str)
 }
 
 printCar(car)
 
-/*
+
 //* Optional properties
 //? Insert into function printCar
 // let str = `${car.make} ${car.model} (${car.year})`
@@ -32,19 +42,19 @@ printCar(car)
 // if (typeof car.chargeVoltage !== "undefined")
 //   str += `// ${car.chargeVoltage}v`
 
-/*
-// printCar({ //? original fn works
-//     make: "Honda",
-//     model: "Accord",
-//     year: 2017,
-// })
 
-// printCar({ //? optional property works too!
-//     make: "Tesla",
-//     model: "Model 3",
-//     year: 2020,
-//     chargeVoltage: 220,
-// })
+printCar({ //? original fn works
+    make: "Honda",
+    model: "Accord",
+    year: 2017,
+})
+
+printCar({ //? optional property works too!
+    make: "Tesla",
+    model: "Model 3",
+    year: 2020,
+    chargeVoltage: 220,
+})
 
 /*
 //* Excess property checking
