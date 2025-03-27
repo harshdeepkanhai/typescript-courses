@@ -1,5 +1,11 @@
 //* Objects
 
+const myCar = {
+  make: "Toyota",
+  model: "Corolla",
+  year: 2002,
+}
+
 let car: {
   make: string
   model: string
