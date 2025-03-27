@@ -14,16 +14,16 @@ let car: {
 
 
 //? A function that prints info about a car to stdout
-function printCar(car?: {
+function printCar(car: {
     make: string
     model: string
     year: number
     chargeVoltage?: number //? Optional property
 }) {
-  if (!car) {
-    console.log("No car to print")
-    return
-  }
+  // if (!car) {
+  //   console.log("No car to print")
+  //   return
+  // }
   let str = `${car.make} ${car.model} (${car.year})`
   car.chargeVoltage
   if (typeof car.chargeVoltage === "number") {
@@ -56,15 +56,32 @@ printCar({ //? optional property works too!
     chargeVoltage: 220,
 })
 
-/*
+
 //* Excess property checking
 
-// printCar({
-//     make: "Tesla",
-//     model: "Model 3",
-//     year: 2020,
-//     color: "RED", //? EXTRA PROPERTY
-// })
+const myArg = {
+  make: "Tesla",
+  model: "Model 3",
+  year: 2020,
+  color: "RED", //? EXTRA PROPERTY
+}
+
+myArg.color
+printCar(myArg)
+
+printCar({...{
+  make: "Tesla",
+  model: "Model 3",
+  year: 2020,
+  color: "RED", //? EXTRA PROPERTY
+}})
+
+printCar({...{
+  make: "Tesla",
+  model: "Model 3",
+  year: 2020,
+},...{  color: "RED"}})
+
 
 /*
 //* Index signatures
