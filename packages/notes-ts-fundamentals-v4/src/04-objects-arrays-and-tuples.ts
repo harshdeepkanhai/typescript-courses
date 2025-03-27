@@ -130,25 +130,25 @@ const cars = [ //? Let's look at an array of objects
 
 
 //* Tuples
-/*
-// let myCar = [
-//     2002,     // Year
-//     "Toyota", // Make
-//     "Corolla" // Model
-// ]
-// const [year, make, model] = myCar //✔️ Destructuring
+
+let myCar2 = [
+    2002,     // Year
+    "Toyota", // Make
+    "Corolla" // Model
+]
+const [year, make, model] = myCar2 //✔️ Destructuring
 
 //? Inference doesn't work very well for tuples
-/*
-// myCar = ["Honda", 2017, "Accord", "Sedan"] //! Wrong convention
-/*
-// let myCar: [number, string, string] = [
-//     2002,
-//     "Toyota",
-//     "Corolla",
-// ]
-// myCar = ["Honda", 2017, "Accord"] //! Wrong convention
-// myCar = [2017, "Honda", "Accord", "Sedan"] //! Too many elements
+
+myCar2 = ["Honda", 2017, "Accord", "Sedan"] //! Wrong convention
+
+let myCar3: [number, string, string] = [
+    2002,
+    "Toyota",
+    "Corolla",
+]
+myCar3 = ["Honda", 2017, "Accord"] //! Wrong convention
+myCar3 = [2017, "Honda", "Accord", "Sedan"] //! Too many elements
 
 
 //*  `readonly` tuples
