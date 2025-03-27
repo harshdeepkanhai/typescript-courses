@@ -10,19 +10,19 @@ let car: {
   make: string
   model: string
   year: number
+} = myCar
+
+
+//? A function that prints info about a car to stdout
+function printCar(car: {
+    make: string
+    model: string
+    year: number
+}) {
+    console.log(`${car.make} ${car.model} (${car.year})`)
 }
 
-/*
-//? A function that prints info about a car to stdout
-// function printCar(car: {
-//     make: string
-//     model: string
-//     year: number
-// }) {
-//     console.log(`${car.make} ${car.model} (${car.year})`)
-// }
-
-// printCar(car)
+printCar(car)
 
 /*
 //* Optional properties
