@@ -143,23 +143,23 @@ if (Car.isCar(val)) {
 }
 
 //* Narrowing with switch(true)
-/*
-// class Fish {
-//     swim(): void { }
-// }
-// class Bird {
-//     fly(): void { }
-// }
+
+class Fish {
+    swim(): void { }
+}
+class Bird {
+    fly(): void { }
+}
 
 
-// switch (true) {
-//     case val instanceof Bird:
-//         val.fly()
-//         break
-//     case val instanceof Fish:
-//         val.swim()
-//         break
-// }
+switch (true) {
+    case val instanceof Bird:
+        val.fly()
+        break
+    case val instanceof Fish:
+        val.swim()
+        break
+}
 
 //* Writing high-quality type guards
 /*
