@@ -2,9 +2,18 @@
 
 //? Field types
 class Car {
-  static nextSerialNumber = 100
+  static nextSerialNumber: number
   static generateSerialNumber() { return this.nextSerialNumber++ }
-  
+  static {
+    // `this` is the static scope
+    fetch("https://api.example.com/vin_number_data")
+        .then(response => response.json())
+        .then(data => {
+            this.nextSerialNumber = data.mostRecentInvoiceId + 1;
+        })
+  }
+  static {}
+
   make: string
   model: string
   year: number
@@ -43,17 +52,9 @@ console.log( new Car("Honda", "Accord", 2017))
 console.log( new Car("Toyota", "Camry", 2022))
 // > "Toyota Camry 2022 - #101
 
-/*
+
 //? static blocks
-// static {
-//     // `this` is the static scope
-//     fetch("https://api.example.com/vin_number_data")
-//         .then(response => response.json())
-//         .then(data => {
-//             this.nextSerialNumber = data.mostRecentInvoiceId + 1;
-//         })
-// }
-// serialNumber = Car.generateSerialNumber()
+
 
 //* Access modifier keywords
 /*
