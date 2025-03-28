@@ -15,19 +15,16 @@ class Car {
   }
   static {}
 
-  make: string
-  model: string
-  year: number
   // serialNumber = Car.generateSerialNumber()
   readonly #serialNumber = Car.#generateSerialNumber()
   protected get serialNumber(): number {
     return this.#serialNumber
   }
-  constructor(make: string, model: string, year: number) {
-    this.make = make
-    this.model = model
-    this.year = year
-  }
+  constructor(
+    public make: string, 
+    public model: string, 
+    public year: number,
+  ) {}
 
   honk(duration: number): string {
     return `h${'o'.repeat(duration)}nk`;
@@ -110,22 +107,22 @@ c2.equals(c1)
 // }
 
 //* Parameter properties
-/*
+
 // constructor(
 //     public make: string,
 //     public model: string,
 //     public year: number
 //   ) {}
 
-// class Base {}
+class Base {}
 
-// class Car2 extends Base {
-//   foo = console.log("class field initializer")
-//   constructor(public make: string) {
-//     super()
-//     console.log("custom constructor stuff")
-//   }
-// }
+class Car2 extends Base {
+  foo = console.log("class field initializer")
+  constructor(public make: string) {
+    super()
+    console.log("custom constructor stuff")
+  }
+}
 
 //* Overrides
 
