@@ -8,7 +8,6 @@ class Car {
   constructor(make: string, model: string, year: number) {
     this.make = make
     this.model = model
-    //     ^?
     this.year = year
   }
 }
