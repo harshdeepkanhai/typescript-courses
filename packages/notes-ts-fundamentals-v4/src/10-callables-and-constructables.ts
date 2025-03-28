@@ -39,33 +39,36 @@ let MyDateConstructor: DateConstructor = Date
 const d = new MyDateConstructor(1697923072611)
 
 //* Function overloads
-/*
-// type FormSubmitHandler = (data: FormData) => void
-// type MessageHandler = (evt: MessageEvent) => void
 
-// function handleMainEvent(
-//     elem: HTMLFormElement | HTMLIFrameElement,
-//     handler: FormSubmitHandler | MessageHandler
-// ) { }
+type FormSubmitHandler = (data: FormData) => void
+type MessageHandler = (evt: MessageEvent) => void
 
-// const myFrame = document.getElementsByTagName("iframe")[0]
-// handleMainEvent(myFrame, (val) => {
-// })
+function handleMainEvent(
+  elem: HTMLFormElement,
+  handler: FormSubmitHandler
+): void
+function handleMainEvent(
+  elem: HTMLIFrameElement,
+  handler: MessageHandler
+): void
 
-/*
-// //? Add above handleMainEvent function declaration
-// function handleMainEvent(
-//     elem: HTMLFormElement,
-//     handler: FormSubmitHandler
-// )
-// function handleMainEvent(
-//     elem: HTMLIFrameElement,
-//     handler: MessageHandler
-// )
-// //? Form handler has a specific type now!
-// const myForm = document.getElementsByTagName("form")[0]
-// handleMainEvent(myForm, (val) => {
-// })
+function handleMainEvent(
+    elem: HTMLFormElement | HTMLIFrameElement,
+    handler: FormSubmitHandler | MessageHandler
+) { }
+
+const myFrame = document.getElementsByTagName("iframe")[0]
+handleMainEvent(myFrame, (evt) => {
+
+})
+
+
+//? Add above handleMainEvent function declaration
+
+//? Form handler has a specific type now!
+const myForm = document.getElementsByTagName("form")[0]
+handleMainEvent(myForm, (val) => {
+})
 
 //* `this` types
 /*
