@@ -10,24 +10,24 @@ const add: TwoNumberCalculation = (a, b) => a + b
 const subtract: TwoNumberCalc = (x, y) => x - y
 
 //* `void`
-/*
-// function printFormattedJSON(obj: string[]) {
-//     console.log(JSON.stringify(obj, null, "  "))
-// }
 
-// const x = printFormattedJSON(["hello", "world"])
+function printFormattedJSON(obj: string[]) {
+    console.log(JSON.stringify(obj, null, "  "))
+}
 
-/*
-// function invokeInFourSeconds(callback: () => undefined) {
-//     setTimeout(callback, 4000)
-// }
-// function invokeInFiveSeconds(callback: () => void) {
-//     setTimeout(callback, 5000)
-// }
+const x = printFormattedJSON(["hello", "world"])
 
-// const values: number[] = []
-// invokeInFourSeconds(() => values.push(4)) //! Error: Type 'undefined' is not assignable to type 'number'.
-// invokeInFiveSeconds(() => values.push(4))
+
+function invokeInFourSeconds(callback: () => undefined) {
+    setTimeout(callback, 4000)
+}
+function invokeInFiveSeconds(callback: () => void) {
+    setTimeout(callback, 5000)
+}
+
+const values: number[] = []
+invokeInFourSeconds(() => values.push(4)) //! Error: Type 'undefined' is not assignable to type 'number'.
+invokeInFiveSeconds(() => values.push(4))
 
 //* Constructables
 /*
