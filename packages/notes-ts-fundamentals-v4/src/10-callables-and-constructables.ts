@@ -30,13 +30,13 @@ invokeInFourSeconds(() => values.push(4)) //! Error: Type 'undefined' is not ass
 invokeInFiveSeconds(() => values.push(4))
 
 //* Constructables
-/*
-// interface DateConstructor {
-//     new(value: number): Date
-// }
 
-// let MyDateConstructor: DateConstructor = Date
-// const d = new MyDateConstructor(1697923072611)
+interface DateConstructor {
+    new(value: number): Date
+}
+
+let MyDateConstructor: DateConstructor = Date
+const d = new MyDateConstructor(1697923072611)
 
 //* Function overloads
 /*
