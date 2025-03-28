@@ -81,25 +81,27 @@ wrapInArray(new Date())
 //   ^?
 wrapInArray(new RegExp("/s/"))
 
-/*
+
 //? Let's try it!
-// listToDict(
-//   [
-//     new Date('10-01-2021'),
-//     new Date('03-14-2021'),
-//     new Date('06-03-2021'),
-//     new Date('09-30-2021'),
-//     new Date('02-17-2021'),
-//     new Date('05-21-2021'),
-//   ],
-//   (arg) => arg.toISOString(),
+listToDict(
+  [
+    new Date('10-01-2021'),
+    new Date('03-14-2021'),
+    new Date('06-03-2021'),
+    new Date('09-30-2021'),
+    new Date('02-17-2021'),
+    new Date('05-21-2021'),
+  ],
+  (arg) => arg.toISOString(),
 // )
 
 //* Best practices
-/*
-// function returnAs<T>(arg: any): T {
-//     return arg //! an `any` that will _seem_ like a `T`
-// } // may as well just cast
+
+function returnAs<T>(arg: any): T {
+    return arg //! an `any` that will _seem_ like a `T`
+} // may as well just cast
+
+
 
 /**/
 export default {}
