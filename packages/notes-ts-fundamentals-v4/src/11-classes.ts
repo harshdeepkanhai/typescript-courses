@@ -2,9 +2,13 @@
 
 //? Field types
 class Car {
+  static nextSerialNumber = 100
+  static generateSerialNumber() { return this.nextSerialNumber++ }
+  
   make: string
   model: string
   year: number
+  serialNumber = Car.generateSerialNumber()
   constructor(make: string, model: string, year: number) {
     this.make = make
     this.model = model
@@ -13,7 +17,11 @@ class Car {
 
   honk(duration: number): string {
     return `h${'o'.repeat(duration)}nk`;
- }
+  }
+
+  getLabel() {
+    return `${this.make} ${this.model} ${this.year} - #${this.serialNumber}`
+  }
 }
 
 let sedan = new Car('Honda', 'Accord', 2017)
@@ -26,18 +34,14 @@ new Car(2017, "Honda", "Accord") //! not safe!
 const c = new Car("Honda", "Accord", 2017);
 c.honk(5); // "hooooonk"
 
-/*
-//? static member fields
-// static nextSerialNumber = 100
-// static generateSerialNumber() { return this.nextSerialNumber++ }
-// getLabel() {
-// return `${this.make} ${this.model} ${this.year} - #${this.serialNumber}`
-// }
 
-// console.log( new Car("Honda", "Accord", 2017))
-// // > "Honda Accord 2017 - #100
-// console.log( new Car("Toyota", "Camry", 2022))
-// // > "Toyota Camry 2022 - #101
+//? static member fields
+
+
+console.log( new Car("Honda", "Accord", 2017))
+// > "Honda Accord 2017 - #100
+console.log( new Car("Toyota", "Camry", 2022))
+// > "Toyota Camry 2022 - #101
 
 /*
 //? static blocks
