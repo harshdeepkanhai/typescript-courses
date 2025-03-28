@@ -63,7 +63,22 @@ function filterDict<T>(
   return outDict
 }
 // Array.prototype.reduce, but for Dict
-function reduceDict(...args: any[]): any {}
+function reduceDict<T, S>(
+  inputDict: Dict<T>,
+  reducerFunction: (
+    currentVal: S,
+    dictItem: T,
+    key: string
+  ) => S,
+  initialValue: S
+): S {
+  let value = initialValue
+  for (let k of Object.keys(inputDict)) {
+    const thisVal = inputDict[k]
+    value = reducerFunction(value, thisVal, k)
+  }
+  return value
+}
 
 /////////////////////////////////////////
 ///////////// TEST SUITE ///////////////
