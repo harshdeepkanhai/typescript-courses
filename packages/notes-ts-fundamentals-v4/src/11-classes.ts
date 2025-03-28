@@ -36,6 +36,17 @@ class Car {
   getLabel() {
     return `${this.make} ${this.model} ${this.year} - #${this.serialNumber}`
   }
+
+  equals(other: any) {
+    if (other &&
+      typeof other === 'object' &&
+      #serialNumber in other) {
+        other
+//       ^?
+        return other.#serialNumber = this.#serialNumber
+      }
+      return false
+  }
 }
 
 let sedan = new Car('Honda', 'Accord', 2017)
@@ -86,22 +97,13 @@ c.#serialNumber
 // #serialNumber = Car.#generateSerialNumber()
 
 //* Private field presence checks
-/*
-// equals(other: unknown) {
-//     if (other &&
-//       typeof other === 'object' &&
-//       #serialNumber in other) {
-//         other
-// //       ^?
-//         return other.#serialNumber = this.#serialNumber
-//       }
-//       return false
-//   }
-// const c2 = c1
-// c2.equals(c1)
+
+
+const c2 = c1
+c2.equals(c1)
 
 //* readonly
-/*
+
 // readonly #serialNumber = Car.#generateSerialNumber()
 // changeSerialNumber(num: number) {
 //     this.#serialNumber = num
