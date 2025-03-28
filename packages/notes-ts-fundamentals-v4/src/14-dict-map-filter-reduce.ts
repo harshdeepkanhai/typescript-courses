@@ -39,7 +39,17 @@ interface Dict<T> {
 }
 
 // Array.prototype.map, but for Dict
-function mapDict(...args: any[]): any {}
+function mapDict<T, S>(
+  inputDict: Dict<T>,
+  mapFunction: (original: T, key: string) => S,
+): Dict<S> {
+  const outDict: Dict<S> = {}
+  for (let k of Object.keys(inputDict)) {
+    const thisVal = inputDict[k]
+    outDict[k] = mapFunction(thisVal, k)
+  }
+  return outDict
+}
 // Array.prototype.filter, but for Dict
 function filterDict(...args: any[]): any {}
 // Array.prototype.reduce, but for Dict
