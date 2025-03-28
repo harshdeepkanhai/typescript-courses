@@ -115,32 +115,32 @@ maybeCar
 
 //* Use with private #field presence checks
 
-/*
-// class Car {
-//     static #nextSerialNumber: number = 100
-//     static #generateSerialNumber() { return this.#nextSerialNumber++ }
 
-//     #serialNumber = Car.#generateSerialNumber()
+class Car {
+    static #nextSerialNumber: number = 100
+    static #generateSerialNumber() { return this.#nextSerialNumber++ }
 
-//     static isCar(other: any): other is Car {
-//         if (other && // is it truthy
-//             typeof other === "object" && // and an object
-//             #serialNumber in other) { // and we can find a private field that we can access from here
-//             // then it *must* be a car
-//             other
-//             // ^?
-//             return true
-//         }
-//         return false
-//     }
-// }
+    #serialNumber = Car.#generateSerialNumber()
 
-// let val: any
+    static isCar(other: any): other is Car {
+        if (other && // is it truthy
+            typeof other === "object" && // and an object
+            #serialNumber in other) { // and we can find a private field that we can access from here
+            // then it *must* be a car
+            other
+            // ^?
+            return true
+        }
+        return false
+    }
+}
 
-// if (Car.isCar(val)) {
-//     val
-//     // ^?
-// }
+let val: any
+
+if (Car.isCar(val)) {
+    val
+    // ^?
+}
 
 //* Narrowing with switch(true)
 /*
