@@ -162,19 +162,19 @@ switch (true) {
 }
 
 //* Writing high-quality type guards
-/*
-// //! EXAMPLE OF A BAD TYPE GUARD
-// function isNull(val: any): val is null {
-//     return !val //! Lies!
-// }
-// const empty = ""
-// const zero = 0
-// if (isNull(zero)) {
-//     console.log(zero) //? is it really impossible to get here?
-// }
-// if (isNull(empty)) {
-//     console.log(empty) //? is it really impossible to get here?
-// }
+
+//! EXAMPLE OF A BAD TYPE GUARD
+function isNull(val: any): val is null {
+    return !val //! Lies!
+}
+const empty = ""
+const zero = 0
+if (isNull(zero)) {
+    console.log(zero) //? is it really impossible to get here?
+}
+if (isNull(empty)) {
+    console.log(empty) //? is it really impossible to get here?
+}
 
 /**/
 export default {}
