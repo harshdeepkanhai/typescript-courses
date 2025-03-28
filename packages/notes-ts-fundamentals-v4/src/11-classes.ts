@@ -10,19 +10,21 @@ class Car {
     this.model = model
     this.year = year
   }
+
+  honk(duration: number): string {
+    return `h${'o'.repeat(duration)}nk`;
+ }
 }
 
 let sedan = new Car('Honda', 'Accord', 2017)
-// sedan.activateTurnSignal("left") //! not safe!
-// new Car(2017, "Honda", "Accord") //! not safe!
+sedan.activateTurnSignal("left") //! not safe!
+new Car(2017, "Honda", "Accord") //! not safe!
 
-/*
+
 //? method types
-// honk(duration: number): string {
-//     return `h${'o'.repeat(duration)}nk`;
-//  }
-// const c = new Car("Honda", "Accord", 2017);
-// c.honk(5); // "hooooonk"
+
+const c = new Car("Honda", "Accord", 2017);
+c.honk(5); // "hooooonk"
 
 /*
 //? static member fields
