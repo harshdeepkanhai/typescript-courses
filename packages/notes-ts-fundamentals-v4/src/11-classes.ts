@@ -2,15 +2,15 @@
 
 //? Field types
 class Car {
-  private static nextSerialNumber: number
-  private static generateSerialNumber() { return this.nextSerialNumber++ }
+  static #nextSerialNumber: number
+  static #generateSerialNumber() { return this.#nextSerialNumber++ }
 
   static {
     // `this` is the static scope
     fetch("https://api.example.com/vin_number_data")
         .then(response => response.json())
         .then(data => {
-            this.nextSerialNumber = data.mostRecentInvoiceId + 1;
+            this.#nextSerialNumber = data.mostRecentInvoiceId + 1;
         })
   }
   static {}
@@ -19,7 +19,7 @@ class Car {
   model: string
   year: number
   // serialNumber = Car.generateSerialNumber()
-  #serialNumber = Car.generateSerialNumber()
+  #serialNumber = Car.#generateSerialNumber()
   protected get serialNumber(): number {
     return this.#serialNumber
   }
@@ -79,7 +79,7 @@ console.log( new Car("Toyota", "Camry", 2022))
 // #serialNumber = Car.generateSerialNumber()
 c.#serialNumber
 
-/*
+
 //? static fields
 // static #nextSerialNumber: number
 // static #generateSerialNumber() { return this.#nextSerialNumber++ }
