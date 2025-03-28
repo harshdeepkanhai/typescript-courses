@@ -17,7 +17,11 @@ class Car {
   make: string
   model: string
   year: number
-  serialNumber = Car.generateSerialNumber()
+  // serialNumber = Car.generateSerialNumber()
+  private _serialNumber = Car.generateSerialNumber()
+  protected get serialNumber() {
+    return this._serialNumber
+  }
   constructor(make: string, model: string, year: number) {
     this.make = make
     this.model = model
@@ -57,12 +61,9 @@ console.log( new Car("Toyota", "Camry", 2022))
 
 
 //* Access modifier keywords
-/*
+
 //? on member fields
-// private _serialNumber = Car.generateSerialNumber()
-// protected get serialNumber() {
-//   return this._serialNumber
-// }
+
 // const s = new Sedan("Nissan", "Altima", 2020)
 // s.serialNumber
 
