@@ -19,9 +19,9 @@ class Car {
   model: string
   year: number
   // serialNumber = Car.generateSerialNumber()
-  private _serialNumber = Car.generateSerialNumber()
+  #serialNumber = Car.generateSerialNumber()
   protected get serialNumber(): number {
-    return this._serialNumber
+    return this.#serialNumber
   }
   constructor(make: string, model: string, year: number) {
     this.make = make
@@ -74,10 +74,10 @@ console.log( new Car("Toyota", "Camry", 2022))
 // Car.generateSerialNumber()
 
 //* JS private #fields
-/*
+
 //? member fields
 // #serialNumber = Car.generateSerialNumber()
-// c.#serialNumber
+c.#serialNumber
 
 /*
 //? static fields
