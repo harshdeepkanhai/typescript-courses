@@ -51,7 +51,17 @@ function mapDict<T, S>(
   return outDict
 }
 // Array.prototype.filter, but for Dict
-function filterDict(...args: any[]): any {}
+function filterDict<T>(
+  inputDict: Dict<T>,
+  filterFunction: (value: T, key: string) => boolean
+): Dict<T> {
+  const outDict: Dict<T> = {}
+  for (let k of Object.keys(inputDict)) {
+    const thisVal = inputDict[k]
+    if (filterFunction(thisVal, k)) outDict[k] = thisVal
+  }
+  return outDict
+}
 // Array.prototype.reduce, but for Dict
 function reduceDict(...args: any[]): any {}
 
