@@ -20,32 +20,39 @@ const phoneDict = {
   },
   /*... and so on */
 }
-/*
-// interface PhoneInfo {
-//   customerId: string
-//   areaCode: string
-//   num: string
-// }
 
-// function listToDict(
-//   list: PhoneInfo[], // take the list as an argument
-//   idGen: (arg: PhoneInfo) => string, // a callback to get Ids
-// ): { [k: string]: PhoneInfo } {}
+interface PhoneInfo {
+  customerId: string
+  areaCode: string
+  num: string
+}
 
-/*
+function listToDict(
+  list: PhoneInfo[], // take the list as an argument
+  idGen: (arg: PhoneInfo) => string, // a callback to get Ids
+): { [k: string]: PhoneInfo } {
+  const dict: { [k: string]: PhoneInfo } = {}
+  list.forEach((element) => {
+    const dictKey = idGen(element)
+    dict[dictKey] = element // store element under key
+  })
+  return dict
+}
+
+
 //? function body
-// // create an empty dictionary
+// create an empty dictionary
 // const dict: { [k: string]: PhoneInfo } = {}
 
-// // Loop through the array
+// Loop through the array
 // list.forEach((element) => {
 //   const dictKey = idGen(element)
 //   dict[dictKey] = element // store element under key
 // })
 
-// // return the dictionary
-// const result = listToDict(phoneList, (item) => item.customerId)
-// console.log(result)
+// return the dictionary
+const result = listToDict(phoneList, (item) => item.customerId)
+console.log(result)
 /*
 //? An attempt to generalize the above function to work with any type of list
 
