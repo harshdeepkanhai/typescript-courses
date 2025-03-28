@@ -188,19 +188,19 @@ interface AnimalLike { //✔️ Additional declaration is OK
 
 //* Use case: augmenting existing types
 
-/*
-// window.document // an existing property
-// //      ^? (property) document: Document
-// window.exampleProperty = 42
-// //      ^? (property) exampleProperty: number
 
-/*
-//// tells TS that `exampleProperty` exists
-// declare global {
-//     interface Window {
-//     exampleProperty: number
-//     }
-// }
+window.document // an existing property
+//      ^? (property) document: Document
+window.exampleProperty = 42
+//      ^? (property) exampleProperty: number
+
+
+// tells TS that `exampleProperty` exists
+declare global {
+    interface Window {
+    exampleProperty: number
+    }
+}
 
 //* Recursive types
 /*
