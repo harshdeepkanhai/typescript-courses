@@ -6,20 +6,21 @@ type DateStringPropertyNames = DatePropertyNames & string
 type DateSymbolPropertyNames = DatePropertyNames & symbol
 
 //* typeof
-/*
-// async function main() {
-//     const apiResponse = await Promise.all([
-//         fetch("https://example.com"),
-//         Promise.resolve("Titanium White"),
-//     ])
-//     type ApiResponseType = typeof apiResponse
-// }
-/*
-//?^ note: type alias within a function scope!
-// const MyAjaxConstructor = CSSRule
-// CSSRule.STYLE_RULE
-// const myAjax = new CSSRule()
 
+async function main() {
+    const apiResponse = await Promise.all([
+        fetch("https://example.com"),
+        Promise.resolve("Titanium White"),
+    ])
+    type ApiResponseType = typeof apiResponse
+}
+
+//?^ note: type alias within a function scope!
+const MyRule = CSSRule
+CSSRule.STYLE_RULE
+const foo = new MyRule()
+
+type MyRuleType = typeof MyRule 
 
 //* Indexed Access Types
 
