@@ -19,7 +19,7 @@ class Car {
   model: string
   year: number
   // serialNumber = Car.generateSerialNumber()
-  #serialNumber = Car.#generateSerialNumber()
+  readonly #serialNumber = Car.#generateSerialNumber()
   protected get serialNumber(): number {
     return this.#serialNumber
   }
@@ -43,7 +43,7 @@ class Car {
       #serialNumber in other) {
         other
 //       ^?
-        return other.#serialNumber = this.#serialNumber
+        return other.#serialNumber === this.#serialNumber
       }
       return false
   }
