@@ -2,8 +2,9 @@
 
 //? Field types
 class Car {
-  static nextSerialNumber: number
-  static generateSerialNumber() { return this.nextSerialNumber++ }
+  private static nextSerialNumber: number
+  private static generateSerialNumber() { return this.nextSerialNumber++ }
+
   static {
     // `this` is the static scope
     fetch("https://api.example.com/vin_number_data")
@@ -19,7 +20,7 @@ class Car {
   year: number
   // serialNumber = Car.generateSerialNumber()
   private _serialNumber = Car.generateSerialNumber()
-  protected get serialNumber() {
+  protected get serialNumber(): number {
     return this._serialNumber
   }
   constructor(make: string, model: string, year: number) {
@@ -67,10 +68,9 @@ console.log( new Car("Toyota", "Camry", 2022))
 // const s = new Sedan("Nissan", "Altima", 2020)
 // s.serialNumber
 
-/*
+
 //? on static fields
-// private static nextSerialNumber: number
-// private static generateSerialNumber() { return this.nextSerialNumber++ }
+
 // Car.generateSerialNumber()
 
 //* JS private #fields
