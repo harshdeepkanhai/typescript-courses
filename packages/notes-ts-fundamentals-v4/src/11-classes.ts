@@ -5,12 +5,14 @@ class Car {
   static #nextSerialNumber: number
   static #generateSerialNumber() { return this.#nextSerialNumber++ }
 
+  static isReady: boolean
   static {
     // `this` is the static scope
     fetch("https://api.example.com/vin_number_data")
         .then(response => response.json())
         .then(data => {
-            this.#nextSerialNumber = data.mostRecentInvoiceId + 1;
+            this.#nextSerialNumber = data.mostRecentInvoiceId + 1
+            this.isReady = true
         })
   }
   static {}
