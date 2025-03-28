@@ -128,15 +128,15 @@ class Car2 extends Base {
 
 //* Overrides
 
-/*
-// class Truck extends Car {
-//     hoonk() { // OOPS!
-//         console.log("BEEP")
-//     }
-// }
 
-// const t = new Truck("Ford", "F-150", 2020);
-// t.honk(); // "beep"
+class Truck extends Car {
+    override honk() { // OOPS!
+        return "BEEP"
+    }
+}
+
+const t = new Truck("Ford", "F-150", 2020);
+t.honk(); // "beep"
 
 //? override keyword
 // override hoonk() { // OOPS!

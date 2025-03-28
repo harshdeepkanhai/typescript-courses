@@ -9,6 +9,7 @@
         "noUnusedLocals": false,
         "noImplicitAny": true,
         "noImplicitThis": true,
+        "noImplicitOverride": true,
         "strictBindCallApply": true,
         "strictNullChecks": true
     }
