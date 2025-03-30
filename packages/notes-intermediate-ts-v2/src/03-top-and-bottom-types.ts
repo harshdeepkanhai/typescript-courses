@@ -103,55 +103,65 @@ type foo = NonNullable
 
 
 //* Bottom type: never
-/*
-// function obtainRandomVehicle(): any {
-//   return {} as any
-// }
 
-// class Car {
-//   drive() {
-//     console.log('vroom')
-//   }
-// }
-// class Truck {
-//   tow() {
-//     console.log('dragging something')
-//   }
-// }
-// type Vehicle = Truck | Car
+function obtainRandomVehicle(): any {
+  return {} as any
+}
 
-// let myVehicle: Vehicle = obtainRandomVehicle()
+class Car {
+  drive() {
+    console.log('vroom')
+  }
+}
+class Truck {
+  tow() {
+    console.log('dragging something')
+  }
+}
 
-// // The exhaustive conditional
-// if (myVehicle instanceof Truck) {
-//   myVehicle.tow() // Truck
-// } else if (myVehicle instanceof Car) {
-//   myVehicle.drive() // Car
-// } else {
-//   // NEITHER!
+class Boat {
+    isFloating() {
+      return true
+    }
+  }
+
+type Vehicle = Truck | Car | Boat
+
+let myVehicle: Vehicle = obtainRandomVehicle()
+
+class UnreachableError extends Error {
+    constructor(_nvr: never, message: string) {
+      super(message)
+    }
+  }
+
+// The exhaustive conditional
+if (myVehicle instanceof Truck) {
+  myVehicle.tow() // Truck
+} else if (myVehicle instanceof Car) {
+  myVehicle.drive() // Car
+} 
+else if (myVehicle instanceof Boat) { // Do nothing
+
+}
+else {
+  // NEITHER!
 //   const neverValue: never = myVehicle
-// }
+  throw new UnreachableError(
+    myVehicle,
+    `Unexpected vehicle type: ${myVehicle}`,
+  )
+}
 
-/*
+
 //? Add Boat
-// class Boat {
-//   isFloating() {
-//     return true
-//   }
-// }
 
-/*
+
+
 //? Unreachable Error
-// class UnreachableError extends Error {
-//   constructor(_nvr: never, message: string) {
-//     super(message)
-//   }
-// }
 
-// throw new UnreachableError(
-//   myVehicle,
-//   `Unexpected vehicle type: ${myVehicle}`,
-// )
+
+
 
 //* Unit Types
 /*
