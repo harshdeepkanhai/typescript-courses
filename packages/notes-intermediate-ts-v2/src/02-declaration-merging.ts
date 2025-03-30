@@ -96,14 +96,23 @@ namespace $ {
 }
 
 //* A look back on classes
-/*
-// // how to test for a value
-// const valueTest = Fruit // Fruit is a value!
-// valueTest.createBanana
 
-// // how to test for a type
-// let typeTest: Fruit = {} as any // Fruit is a type!
-// typeTest.color
+class Fruit2 {
+  name?: string
+  mass?: number
+  color?: string
+  static createBanana() {
+    return Object.freeze({ name: 'banana', mass: 183, color: 'yellow' })
+  }
+}
+
+// how to test for a value
+const valueTest = Fruit2 // Fruit2 is a value!
+valueTest.createBanana
+
+// how to test for a type
+let typeTest: Fruit2 = {} as any // Fruit is a type!
+typeTest.color
 
 /**/
-export { banana, Fruit }
+export { banana, Fruit, Fruit2 }
