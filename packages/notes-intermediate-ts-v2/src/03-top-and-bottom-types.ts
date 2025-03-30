@@ -164,22 +164,22 @@ else {
 
 
 //* Unit Types
-/*
-// //? null and undefined
-// let myNull: null = null
-// let myUndefined: undefined = undefined
 
-// myNull = undefined
-// myUndefined = null
+//? null and undefined
+let myNull: null = null
+let myUndefined: undefined = undefined
 
-// //? void
-// let myVoid: void = (function() {})()// invoking a void-returning IIFE
+myNull = undefined
+myUndefined = null
 
-// myVoid = undefined
-// myVoid = null
+//? void
+let myVoid: void = (function() {})()// invoking a void-returning IIFE
 
-// myUndefined = myVoid
-// myNull = myVoid
+myVoid = undefined
+myVoid = null
+
+myUndefined = myVoid
+myNull = myVoid
 
 /**/
 
