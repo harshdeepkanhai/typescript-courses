@@ -23,16 +23,16 @@ allBerries.Raspberry
 export * from './berries' // namespace re-export
 
 //* Importing types
-/*
-// let x: Raspberry = { color: 'red' }
+
+let x: Raspberry = { color: 'red' }
 // const y = new Raspberry('red')
 
 //* Type-only imports
-/*
-// import type { Strawberry } from './berries/strawberry'
 
-// let z: Strawberry = { color: 'red' }
-// new Strawberry()
+import type { Strawberry } from './berries/strawberry'
+
+let z: Strawberry = { color: 'red' }
+new Strawberry()
 
 //* CommonJS Interop
 /*
