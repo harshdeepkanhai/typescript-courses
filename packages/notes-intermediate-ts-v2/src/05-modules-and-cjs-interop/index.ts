@@ -51,7 +51,7 @@ const melon = new Melon()
 melon.cutIntoSlices()
 
 //* Native ES Module support
-/*
+
 // import * as bananaNamespace from './banana.cjs'
 // package.json --> 'type: module', 'type: commonjs'
 
