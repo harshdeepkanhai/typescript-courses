@@ -7,20 +7,21 @@ const userInfo = {
 }
 
 //* Undefined
-/*
-// interface FormInProgress {
-//   createdAt: Date
-//   data: FormData
-//   completedAt?: Date
-// }
-// const formInProgress: FormInProgress = {
-//   createdAt: new Date(),
-//   data: new FormData(),
-// }
-// function submitForm() {
-//   const myDate: Date = formInProgress.completedAt
-//   formInProgress.completedAt = new Date()
-// }
+
+interface FormInProgress {
+  createdAt: Date
+  data: FormData
+  completedAt?: Date
+}
+const formInProgress: FormInProgress = {
+  createdAt: new Date(),
+  completedAt: new Date(),
+  data: new FormData(),
+}
+function submitForm() {
+  const myDate: Date = formInProgress.completedAt
+  formInProgress.completedAt = new Date()
+}
 
 //* void
 /*
