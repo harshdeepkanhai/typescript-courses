@@ -101,18 +101,18 @@ function getLastPayment2(data: ResponseData): number | undefined {
 }
 
 //* Nullish Coalescing
-/*
-// function setVolume(v: number): void {}
 
-// type PlayerConfig = {
-//   volume?: 0 | 25 | 50 | 75 | 100
-// }
+function setVolume(v: number): void {}
 
-// function initializePlayer(config: PlayerConfig): void {
-//   const vol =
-//     typeof config.volume === 'undefined' ? 50 : config.volume
-//   setVolume(vol)
-// }
+type PlayerConfig = {
+  volume?: 0 | 25 | 50 | 75 | 100
+}
+
+function initializePlayer(config: PlayerConfig): void {
+  const vol =
+    typeof config.volume === 'undefined' ? 50 : config.volume
+  setVolume(vol)
+}
 
 /**/
 export default {}
