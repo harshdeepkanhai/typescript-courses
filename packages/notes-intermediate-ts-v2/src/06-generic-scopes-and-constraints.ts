@@ -20,44 +20,55 @@ const phoneDict = {
   /*... and so on */
 }
 
-function listToDict<T>(
-  list: T[], // array as input
-  idGen: (arg: T) => string, // fn for obtaining item's id
-): { [k: string]: T } {
-  // create dict to fill
-  const dict: { [k: string]: T } = {}
+// function listToDict<T>(
+//   list: T[], // array as input
+//   idGen: (arg: T) => string, // fn for obtaining item's id
+// ): { [k: string]: T } {
+//   // create dict to fill
+//   const dict: { [k: string]: T } = {}
 
-  for (let item of list) {
-    // for each item
-    dict[idGen(item)] = item // make a key store in dict
-  }
+//   for (let item of list) {
+//     // for each item
+//     dict[idGen(item)] = item // make a key store in dict
+//   }
 
-  return dict // result
+//   return dict // result
+// }
+
+interface HasId {
+  id: string
 }
-/*
-// interface HasId {
-//   id: string
-// }
-// interface Dict<T> {
-//   [k: string]: T
-// }
+interface Dict<T> {
+  [k: string]: T
+}
 
 // function listToDict(list: HasId[]): Dict<HasId> {
-//   const dict: Dict<HasId> = {}
+function listToDict<T extends HasId>(list: T[]): Dict<T> {
+// function listToDict<T>(list: T[]): Dict<T> {
+  const dict: Dict<T> = {}
 
-//   list.forEach((item) => {
-//     dict[item.id] = item
-//   })
+  list.forEach((item) => {
+    dict[item.id] = item
+  })
 
-//   return dict
-// }
+  return dict
+}
 
-/*
+const testArr = [
+  {id: 'a', color: 'green'},
+  {id: 'b', color: 'blue'},
+  {id: 'c', color: 'red'},
+]
+
+const testResult = listToDict(testArr)
+testResult.a.
+
+
 //? Let's make it
 // function listToDict<T>(list: T[]): Dict<T> {
 
 //* Describing the constraint
-/*
+
 // function listToDict<T extends HasId>(list: T[]): Dict<T> {
 
 //* Scopes and Type Parameters
