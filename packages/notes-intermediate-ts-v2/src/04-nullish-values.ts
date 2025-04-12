@@ -36,28 +36,28 @@ type GroceryCart = {
 
 const cart: GroceryCart = {}
 
-cart.fruits.push({ name: 'kumkuat', qty: 1 })
+cart.fruits.push({ name: 'kumkuat', qty: 1 })0
 cart.fruits!.push({ name: 'kumkuat', qty: 1 })
 
 //* Definite assignment assertion
-/*
-// class ThingWithAsyncSetup {
-//   setupPromise: Promise<any>
-//   isSetup: boolean
 
-//   constructor() {
-//     this.setupPromise = new Promise((resolve) => {
-//       this.isSetup = false
-//       return this.doSetup(resolve)
-//     }).then(() => {
-//       this.isSetup = true
-//     })
-//   }
+class ThingWithAsyncSetup {
+  setupPromise: Promise<any>
+  isSetup!: boolean
 
-//   private async doSetup(resolve: (value: unknown) => void) {
-//     // some async stuff
-//   }
-// }
+  constructor() {
+    this.setupPromise = new Promise((resolve) => {
+      this.isSetup = false
+      return this.doSetup(resolve)
+    }).then(() => {
+      this.isSetup = true
+    })
+  }
+
+  private async doSetup(resolve: (value: unknown) => void) {
+    // some async stuff
+  }
+}
 
 //* Optional Chaining
 /*
