@@ -56,13 +56,11 @@ melon.cutIntoSlices()
 // package.json --> 'type: module', 'type: commonjs'
 
 //* Importing non-ts things
-/*
-// import img from "./ts-logo.png"
+
+import img from "./ts-logo.png"
+import img2 from "http://example.com/image.html"
 //? Add to global.d.ts
-// declare module '*.png' {
-//   const imgUrl: string
-//   export default imgUrl
-// }
+
 
 /**/
 // export default {}
