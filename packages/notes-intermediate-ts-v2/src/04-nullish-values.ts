@@ -24,8 +24,8 @@ function submitForm() {
 }
 
 //* void
-/*
-// console.log(`console.log returns nothing.`)
+
+console.log(`console.log returns nothing.`)
 
 //* Non-null assertion operator
 /*
