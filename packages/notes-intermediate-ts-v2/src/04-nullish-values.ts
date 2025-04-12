@@ -28,16 +28,16 @@ function submitForm() {
 console.log(`console.log returns nothing.`)
 
 //* Non-null assertion operator
-/*
-// type GroceryCart = {
-//   fruits?: { name: string; qty: number }[]
-//   vegetables?: { name: string; qty: number }[]
-// }
 
-// const cart: GroceryCart = {}
+type GroceryCart = {
+  fruits?: { name: string; qty: number }[]
+  vegetables?: { name: string; qty: number }[]
+}
 
-// cart.fruits.push({ name: 'kumkuat', qty: 1 })
-// cart.fruits!.push({ name: 'kumkuat', qty: 1 })
+const cart: GroceryCart = {}
+
+cart.fruits.push({ name: 'kumkuat', qty: 1 })
+cart.fruits!.push({ name: 'kumkuat', qty: 1 })
 
 //* Definite assignment assertion
 /*
