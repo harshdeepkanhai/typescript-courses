@@ -12,15 +12,15 @@ export default class FruitBasket {} // default export
 export { lemon, lime } from './citrus' // re-export
 export * as berries from './berries' // re-export entire module as a single namespace
 
-/*
-// //? namespace import
-// import * as allBerries from './berries' // namespace import
 
-// allBerries.Strawberry // using the namespace
-// allBerries.Blueberry
-// allBerries.Raspberry
+//? namespace import
+import * as allBerries from './berries' // namespace import
 
-// export * from './berries' // namespace re-export
+allBerries.Strawberry // using the namespace
+allBerries.Blueberry
+allBerries.Raspberry
+
+export * from './berries' // namespace re-export
 
 //* Importing types
 /*
