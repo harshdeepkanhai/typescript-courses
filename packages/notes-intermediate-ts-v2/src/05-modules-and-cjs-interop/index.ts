@@ -1,16 +1,16 @@
 //* ES module imports and exports
 
-/*
-// //? named imports
-// import { Blueberry, Raspberry } from './berries'
-// import Kiwi from './kiwi' // default import
 
-// export function makeFruitSalad() {} // named export
+//? named imports
+import { Blueberry, Raspberry } from './berries'
+import Kiwi from './kiwi' // default import
 
-// export default class FruitBasket {} // default export
+export function makeFruitSalad() {} // named export
 
-// export { lemon, lime } from './citrus' // re-export
-// export * as berries from './berries' // re-export entire module as a single namespace
+export default class FruitBasket {} // default export
+
+export { lemon, lime } from './citrus' // re-export
+export * as berries from './berries' // re-export entire module as a single namespace
 
 /*
 // //? namespace import
@@ -65,4 +65,4 @@
 // }
 
 /**/
-export default {}
+// export default {}
