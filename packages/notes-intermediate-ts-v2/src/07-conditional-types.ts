@@ -19,16 +19,16 @@ let device2: CookingDevice<'oven'>
 //   ^?
 
 //* Expressing Conditions
-/*
-// const one = 1
-// const two = 2
-// const ten = 10
 
-// type IsLowNumber<T> = T extends 1 | 2 ? true : false
-// type TestOne = IsLowNumber<1>
-// type TestTwo = IsLowNumber<2>
-// type TestTen = IsLowNumber<10>
-// type TestTenWithTwo = IsLowNumber<10 | 2>
+const one = 1
+const two = 2
+const ten = 10
+
+type IsLowNumber<T> = T extends 1 | 2 ? true : false
+type TestOne = IsLowNumber<1>
+type TestTwo = IsLowNumber<2>
+type TestTen = IsLowNumber<10>
+type TestTenWithTwo = IsLowNumber<10 | 2>
 
 //* Extract<T, U>
 /*
