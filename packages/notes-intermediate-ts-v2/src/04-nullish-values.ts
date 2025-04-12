@@ -60,45 +60,45 @@ class ThingWithAsyncSetup {
 }
 
 //* Optional Chaining
-/*
-// type Payment = {
-//   id: string
-//   amount: number
-//   createdAt: Date
-// }
-// type Invoice = {
-//   id: string
-//   due: number
-//   payments: Payment[]
-//   lastPayment?: Payment
-//   createdAt: Date
-// }
-// type Customer = {
-//   id: string
-//   lastInvoice?: Invoice
-//   invoices: Invoice[]
-// }
-// type ResponseData = {
-//   customers?: Customer[]
-//   customer?: Customer
-// }
-// function getLastPayment(data: ResponseData): number | undefined {
-//   const { customer } = data
-//   if (!customer) return
 
-//   const { lastInvoice } = customer
-//   if (!lastInvoice) return
+type Payment = {
+  id: string
+  amount: number
+  createdAt: Date
+}
+type Invoice = {
+  id: string
+  due: number
+  payments: Payment[]
+  lastPayment?: Payment
+  createdAt: Date
+}
+type Customer = {
+  id: string
+  lastInvoice?: Invoice
+  invoices: Invoice[]
+}
+type ResponseData = {
+  customers?: Customer[]
+  customer?: Customer
+}
+function getLastPayment(data: ResponseData): number | undefined {
+  const { customer } = data
+  if (!customer) return
 
-//   const { lastPayment } = lastInvoice
-//   if (!lastPayment) return
+  const { lastInvoice } = customer
+  if (!lastInvoice) return
 
-//   return lastPayment.amount
-// }
+  const { lastPayment } = lastInvoice
+  if (!lastPayment) return
 
-/*
-// function getLastPayment2(data: ResponseData): number | undefined {
-//   return data?.customer?.lastInvoice?.lastPayment?.amount
-// }
+  return lastPayment.amount
+}
+
+
+function getLastPayment2(data: ResponseData): number | undefined {
+  return data?.customer?.lastInvoice?.lastPayment?.amount
+}
 
 //* Nullish Coalescing
 /*
