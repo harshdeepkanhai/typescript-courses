@@ -54,6 +54,14 @@ function listToDict<T extends HasId>(list: T[]): Dict<T> {
   return dict
 }
 
+interface ColorWithId extends HasId {
+  color: 'green' | 'blue' | 'red'
+}
+
+const myColor =  {id: 'a', color: 'green'} satisfies ColorWithId
+myColor.color.substring(0, 3)
+
+
 const testArr = [
   {id: 'a', color: 'green'},
   {id: 'b', color: 'blue'},
