@@ -85,42 +85,42 @@ interface Packager<in T> {
 }
 
 //* Invariance
-/*
-// interface ProducerPackager<T> {
-//   produce: () => T
-//   package: (item: T) => void
-// }
-/*
-// let cookieProducerPackager: ProducerPackager<Cookie> = {
-//   produce() {
-//     return new Cookie('dark')
-//   },
-//   package(arg: Cookie) {},
-// }
 
-// let snackProducerPackager: ProducerPackager<Snack> = {
-//   produce() {
-//     return Math.random() > 0.5
-//       ? new Cookie('milk')
-//       : new Pretzel(true)
-//   },
-//   package(item: Snack) {
-//     if (item instanceof Cookie) {
-//       /* Package cookie */
-//     } else if (item instanceof Pretzel) {
-//       /* Package pretzel */
-//     } else {
-//       /* Package other snacks? */
-//     }
-//   },
-// }
+interface ProducerPackager<T> {
+  produce: () => T
+  package: (item: T) => void
+}
 
-/*
-// //? Type equivalence check
-// cookieProducerPackager = snackProducerPackager
-// snackProducerPackager = cookieProducerPackager
+let cookieProducerPackager: ProducerPackager<Cookie> = {
+  produce() {
+    return new Cookie('dark')
+  },
+  package(arg: Cookie) {},
+}
 
-/*
+let snackProducerPackager: ProducerPackager<Snack> = {
+  produce() {
+    return Math.random() > 0.5
+      ? new Cookie('milk')
+      : new Pretzel(true)
+  },
+  package(item: Snack) {
+    if (item instanceof Cookie) {
+      /* Package cookie */
+    } else if (item instanceof Pretzel) {
+      /* Package pretzel */
+    } else {
+      /* Package other snacks? */
+    }
+  },
+}
+
+
+//? Type equivalence check
+cookieProducerPackager = snackProducerPackager
+snackProducerPackager = cookieProducerPackager
+
+
 // | Cookie                    | direction     | Snack                 |
 // |---------------------------|---------------|-----------------------|
 // | `Cookie`                  | --- is a ---> | `Snack`               |
@@ -128,62 +128,62 @@ interface Packager<in T> {
 
 //* Bivariance
 
-/*
-// function cookieQualityCheck(cookie: Cookie): boolean {
-//   return Math.random() > 0.1
-// }
 
-// function snackQualityCheck(snack: Snack): boolean {
-//   if (snack instanceof Cookie) return cookieQualityCheck(snack)
-//   else return Math.random() > 0.16 // pretzel case
-// }
+function cookieQualityCheck(cookie: Cookie): boolean {
+  return Math.random() > 0.1
+}
 
-/*
-// // A function type for preparing a bunch of food items
-// // for shipment. The function must be passed a callback
-// // that will be used to check the quality of each item.
-// type PrepareFoodPackage<T> = (
-//   uncheckedItems: T[],
-//   qualityCheck: (arg: T) => boolean,
-// ) => T[]
+function snackQualityCheck(snack: Snack): boolean {
+  if (snack instanceof Cookie) return cookieQualityCheck(snack)
+  else return Math.random() > 0.16 // pretzel case
+}
 
-/*
-// // Prepare a bunch of snacks for shipment
-// let prepareSnacks: PrepareFoodPackage<Snack> = (
-//   uncheckedItems,
-//   callback,
-// ) => uncheckedItems.filter(callback)
 
-// // Prepare a bunch of cookies for shipment
-// let prepareCookies: PrepareFoodPackage<Cookie> = (
-//   uncheckedItems,
-//   callback,
-// ) => uncheckedItems.filter(callback)
+// A function type for preparing a bunch of food items
+// for shipment. The function must be passed a callback
+// that will be used to check the quality of each item.
+type PrepareFoodPackage<T> = (
+  uncheckedItems: T[],
+  qualityCheck: (arg: T) => boolean,
+) => T[]
 
-/*
-// const cookies = [
-//   new Cookie('dark'),
-//   new Cookie('milk'),
-//   new Cookie('white'),
-// ]
-// const snacks = [
-//   new Pretzel(true),
-//   new Cookie('milk'),
-//   new Cookie('white'),
-// ]
-// prepareSnacks(cookies, cookieQualityCheck)
-// prepareSnacks(snacks, cookieQualityCheck)
-// prepareCookies(cookies, snackQualityCheck)
 
-/*
+// Prepare a bunch of snacks for shipment
+let prepareSnacks: PrepareFoodPackage<Snack> = (
+  uncheckedItems,
+  callback,
+) => uncheckedItems.filter(callback)
+
+// Prepare a bunch of cookies for shipment
+let prepareCookies: PrepareFoodPackage<Cookie> = (
+  uncheckedItems,
+  callback,
+) => uncheckedItems.filter(callback)
+
+
+const cookies = [
+  new Cookie('dark'),
+  new Cookie('milk'),
+  new Cookie('white'),
+]
+const snacks = [
+  new Pretzel(true),
+  new Cookie('milk'),
+  new Cookie('white'),
+]
+prepareSnacks(cookies, cookieQualityCheck)
+prepareSnacks(snacks, cookieQualityCheck)
+prepareCookies(cookies, snackQualityCheck)
+
+
 //? What if we turn `strictFunctionTypes` on and off?
 
 //* What do variance helpers do for you?
-/*
-// interface Example<in T> {
-//   package: (item: T) => void
-//   // produce: () => T;
-// }
+
+interface Example<out T> {
+  package: (item: T) => void
+  produce: () => T;
+}
 
 /**/
 export default {}
