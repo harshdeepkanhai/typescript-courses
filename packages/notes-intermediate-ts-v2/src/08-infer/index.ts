@@ -2,40 +2,40 @@
 import { createOrder } from './fruit-market'
 //        ^?
 
-type GetFirstArg<T> = any;
+// type GetFirstArg<T> = any;
 
 const prefs: GetFirstArg<typeof createOrder> = {}
 
 createOrder(prefs)
 
 //* Example: extracting the type that a promise resolves to
-/*
-//// 
-//// If the type `P` passed in is some kind of `PromiseLike<T>`
-//// (where `T` is a new type param), extract `T` and return it.
-//// If `P` is not some subtype of `PromiseLike<any>`, pass the
-//// type `P` straight through and return it
-//// 
-// type UnwrapPromise<P> = P extends PromiseLike<infer T> ? T : P
 
-// type test1 = UnwrapPromise<Promise<string>>
-// type test2 = UnwrapPromise<Promise<[string[], number[]]>>
-// type test3 = UnwrapPromise<number>
+// 
+// If the type `P` passed in is some kind of `PromiseLike<T>`
+// (where `T` is a new type param), extract `T` and return it.
+// If `P` is not some subtype of `PromiseLike<any>`, pass the
+// type `P` straight through and return it
+// 
+type UnwrapPromise<P> = P extends PromiseLike<infer T> ? T : P
+
+type test1 = UnwrapPromise<Promise<string>>
+type test2 = UnwrapPromise<Promise<[string[], number[]]>>
+type test3 = UnwrapPromise<number>
 
 //* Back to our motivating use case - A need for the first arg of a function
-/*
-// type OneArgFn<A = any> = (firstArg: A, ..._args: any[]) => void
 
-// type GetFirstArg<T extends OneArgFn>
-//     = T extends OneArgFn
-//         ? string[]
-//         : never;
+type OneArgFn<A = any> = (firstArg: A, ..._args: any[]) => void
 
-// // Test case
-// function foo(x: string, y: number) {
-//   return null
-// }
-// type t1 = GetFirstArg<typeof foo> //✔️
+type GetFirstArg<T extends OneArgFn>
+    = T extends OneArgFn<infer R>
+        ? R
+        : never;
+
+// Test case
+function foo(x: string, y: number) {
+  return null
+}
+type t1 = GetFirstArg<typeof foo> //✔️
 
 /*
 // type GetFirstArg<T>
