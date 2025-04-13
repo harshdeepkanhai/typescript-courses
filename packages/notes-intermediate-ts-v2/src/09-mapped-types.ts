@@ -135,40 +135,49 @@ type ExtractMasterName<S> = S extends `${infer T} Masters` ? T : never
 let fe: ExtractMasterName<typeof courseWebsite> = 'Backend'
 
 //* Filtering properties out
-/*
-// type DocKeys = Extract<keyof Document, `query${string}`>
-// type KeyFilteredDoc = {
-//   [K in DocKeys]: Document[K]
-// }
+
+type DocKeys = Extract<keyof Document, `query${string}`>
+type KeyFilteredDoc = {
+  [K in DocKeys]: Document[K]
+}
 
 //? The flawed approach
-/*
-// //! EXAMPLE OF WHAT NOT TO DO. DO NOT FOLLOW THIS EXAMPLE
-// type ValueFilteredDoc = {
-//   [K in keyof Document]: Document[K] extends (
-//     ...args: any[]
-//   ) => Element | Element[]
-//     ? Document[K]
-//     : never
-// }
 
-// function load2(doc: ValueFilteredDoc) {
-//   doc.querySelector('input') //! a lot of nevers!
-// }
+//! EXAMPLE OF WHAT NOT TO DO. DO NOT FOLLOW THIS EXAMPLE
+type ValueFilteredDoc = {
+  [K in keyof Document]: Document[K] extends (
+    ...args: any[]
+  ) => Element | Element[]
+    ? Document[K]
+    : never
+}
 
-/*
-// //? A better approach - filter keys first
-// type FilteredKeys<T, U> = {
-//   [P in keyof T]: T[P] extends U ? P : never
-// }[keyof T] &
-//   keyof T
+// Use this instead
+type ValueFilteredDoc2 = {
+  [K in keyof Document as Document[K] extends (
+    ...args: any[]
+  ) => Element | Element[]
+    ? K
+    : never]: Document[K]
+}
 
-// type RelevantDocumentKeys = FilteredKeys<
-//   Document,
-//   (...args: any[]) => Element | Element[]
-// >
+function load2(doc: ValueFilteredDoc) {
+  doc.querySelector('input') //! a lot of nevers!
+}
 
-// // type ValueFilteredDoc = Pick<Document, RelevantDocumentKeys>
+
+//? A better approach - filter keys first
+type FilteredKeys<T, U> = {
+  [P in keyof T]: T[P] extends U ? P : never
+}[keyof T] &
+  keyof T
+
+type RelevantDocumentKeys = FilteredKeys<
+  Document,
+  (...args: any[]) => Element | Element[]
+>
+
+// type ValueFilteredDoc = Pick<Document, RelevantDocumentKeys>
 
 /**/
 export default {}
