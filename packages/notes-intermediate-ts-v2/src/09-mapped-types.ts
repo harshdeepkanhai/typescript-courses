@@ -69,27 +69,27 @@ type Pick<T, K extends keyof T> = {
 
 //* Mapping modifiers
 
-/*
-// // Make all properties in T optional
-// type _Partial<T> = {
-//   [P in keyof T]?: T[P]
-// }
 
-// // Make all properties in T required
-// type _Required<T> = {
-//   [P in keyof T]-?: T[P]
-// }
+// Make all properties in T optional
+type _Partial<T> = {
+  [P in keyof T]?: T[P]
+}
 
-// // Make all properties in T readonly
-// type _Readonly<T> = {
-//   readonly [P in keyof T]: T[P]
-// }
+// Make all properties in T required
+type _Required<T> = {
+  [P in keyof T]-?: T[P]
+}
 
-/*
-// //! Do not use this -- it's a problematic type!
-// type NotReadonly<T> = {
-//   -readonly [P in keyof T]: T[P]
-// }
+// Make all properties in T readonly
+type _Readonly<T> = {
+  readonly [P in keyof T]: T[P]
+}
+
+
+//! Do not use this -- it's a problematic type!
+type NotReadonly<T> = {
+  -readonly [P in keyof T]: T[P]
+}
 
 //* Template literal types
 /*
