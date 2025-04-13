@@ -18,71 +18,71 @@ class Cookie extends Snack {
 }
 
 //* Covariance
-/*
-// interface Producer<T> {
-//   produce: () => T
-// }
 
-// let cookieProducer: Producer<Cookie> = {
-//   produce: () => new Cookie('dark'),
-// }
-// let snackProducer: Producer<Snack> = {
-//   produce: () => Math.random() > 0.5 ? new Cookie("milk") : new Pretzel(true)
-// };
+interface Producer<T> {
+  produce: () => T
+}
 
-/*
+let cookieProducer: Producer<Cookie> = {
+  produce: () => new Cookie('dark'),
+}
+let snackProducer: Producer<Snack> = {
+  produce: () => Math.random() > 0.5 ? new Cookie("milk") : new Pretzel(true)
+};
+
+
 // //? Type equivalence check
-// snackProducer = cookieProducer //✔️ OK
-// cookieProducer = snackProducer //! Nope
+snackProducer = cookieProducer //✔️ OK
+cookieProducer = snackProducer //! Nope
 
-/*
+
 // | Cookie                | direction     | Snack                 |
 // |-----------------------|---------------|-----------------------|
 // | `Cookie`              | --- is a ---> | `Snack`               |
 // | `Producer<Cookie>`    | --- is a ---> | `Producer<Snack>`     |
 
-/*
-// interface Producer<out T> {
-//   produce: () => T
-// }
+
+interface Producer<out T> {
+  produce: () => T
+}
 
 //* Contravariance
-/*
-// interface Packager<T> {
-//   package: (item: T) => void
-// }
 
-// let cookiePackager: Packager<Cookie> = {
-//   package(item: Cookie) {},
-// }
+interface Packager<T> {
+  package: (item: T) => void
+}
 
-// let snackPackager: Packager<Snack> = {
-//   package(item: Snack) {
-//     if (item instanceof Cookie) {
-//        // Package cookie
-//     } else if (item instanceof Pretzel) {
-//        // Package pretzel
-//     } else {
-//        // Package other snacks?
-//     }
-//   },
-// }
+let cookiePackager: Packager<Cookie> = {
+  package(item: Cookie) {},
+}
 
-/*
-// //? Type equivalence check
-// cookiePackager = snackPackager //✔️ OK
-// snackPackager = cookiePackager //! Nope
+let snackPackager: Packager<Snack> = {
+  package(item: Snack) {
+    if (item instanceof Cookie) {
+       // Package cookie
+    } else if (item instanceof Pretzel) {
+       // Package pretzel
+    } else {
+       // Package other snacks?
+    }
+  },
+}
 
-/*
+
+//? Type equivalence check
+cookiePackager = snackPackager //✔️ OK
+snackPackager = cookiePackager //! Nope
+
+
 // | Cookie                | direction     | Snack                 |
 // |-----------------------|---------------|-----------------------|
 // | `Cookie`              | --- is a ---> | `Snack`               |
 // | `Packager<Cookie>`    | <--- is a --- | `Packager<Snack>`     |
 
-/*
-// interface Packager<in T> {
-//   package: (item: T) => void
-// }
+
+interface Packager<in T> {
+  package: (item: T) => void
+}
 
 //* Invariance
 /*
