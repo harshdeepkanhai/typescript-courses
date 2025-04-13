@@ -12,56 +12,60 @@ const fruitCatalog: Dict<Fruit> = {}
 fruitCatalog.apple
 
 //* Our first mapped type
-/*
 
-// // mapped type
+
+// mapped type
 // type MyRecord = { [FruitKey in 'apple' | 'cherry']: Fruit }
 
-// function printFruitCatalog(fruitCatalog: MyRecord) {
-//   fruitCatalog.cherry
-//   fruitCatalog.apple
-//   fruitCatalog.pineapple //! Error
-// }
+function printFruitCatalog(fruitCatalog: MyRecord) {
+  fruitCatalog.cherry
+  fruitCatalog.apple
+  fruitCatalog.pineapple //! Error
+}
 
 //* Record
-/*
-// type AnyPossibleKey = keyof any
-// // type MyRecord<K extends keyof any, V> = { [Key in K]: V }
 
-// //
-// // type Record<K extends keyof any, T> = {
-// //   [P in K]: T
-// // }
+type AnyPossibleKey = keyof any
+type MyRecord<K extends keyof any, V> = { [Key in K]: V }
+
+
+type Record<K extends keyof any, T> = {
+  [P in K]: T
+}
+
+const myFruit: Record<"first" | "second", Fruit>;
+
+myFruit.first
 
 //* Use with indexed access types
-/*
-// type PartOfWindow = {
-//   [Key in 'document' | 'navigator' | 'setTimeout']: Window[Key]
-// }
-// //
-// type PickWindowProperties<Keys extends keyof Window> = {
-//   [Key in Keys]: Window[Key]
-// }
-// //
-// // type PartOfWindow = PickWindowProperties<
-// //   'document' | 'navigator' | 'setTimeout'
-// // >
+
+type PartOfWindow = {
+  [Key in 'document' | 'navigator' | 'setTimeout']: Window[Key]
+}
+//
+type PickWindowProperties<Keys extends keyof Window> = {
+  [Key in Keys]: Window[Key]
+}
+
+type PartOfWindow2 = PickWindowProperties<
+  'document' | 'navigator' | 'setTimeout'
+>
 
 //* Pick
-/*
-// type PickProperties<ValueType, Keys extends keyof ValueType> = {
-//   [Key in Keys]: ValueType[Key]
-// }
-// // type PartOfWindow = PickProperties<
-// //   Window,
-// //   'document' | 'navigator' | 'setTimeout'
-// // >
 
-// //
-// // From T, pick a set of properties whose keys are in the union K
-// // type Pick<T, K extends keyof T> = {
-// //   [P in K]: T[P]
-// // }
+type PickProperties<ValueType, Keys extends keyof ValueType> = {
+  [Key in Keys]: ValueType[Key]
+}
+type PartOfWindow3 = PickProperties<
+  Window,
+  'document' | 'navigator' | 'setTimeout'
+>
+
+
+// From T, pick a set of properties whose keys are in the union K
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P]
+}
 
 //* Mapping modifiers
 
