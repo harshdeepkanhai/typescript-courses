@@ -62,7 +62,7 @@ let firstT2: GetFirstStringIshElement<typeof t2>
 // infer S extends string,
 
 
-/*
+
 //? add type param constraint
 // T extends string
 
