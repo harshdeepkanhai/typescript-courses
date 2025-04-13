@@ -92,46 +92,47 @@ type NotReadonly<T> = {
 }
 
 //* Template literal types
-/*
-// type ArtFeatures = 'cabin' | 'tree' | 'sunset'
-// type Colors =
-//   | 'darkSienna'
-//   | 'sapGreen'
-//   | 'titaniumWhite'
-//   | 'prussianBlue'
 
-// type ArtMethodNames = `paint_${Colors}_${ArtFeatures}`
+type ArtFeatures = 'cabin' | 'tree' | 'sunset'
+type Colors =
+  | 'darkSienna'
+  | 'sapGreen'
+  | 'titaniumWhite'
+  | 'prussianBlue'
 
-/*
-// type ArtMethodNames =
-//   `paint${Capitalize<Colors>}${Capitalize<ArtFeatures>}`
+type ArtMethodNames = `paint_${Colors}_${ArtFeatures}`
 
-/*
-// interface DataState {
-//   digits: number[]
-//   names: string[]
-//   flags: Record<'darkMode' | 'mobile', boolean>
-// }
 
-// type DataSDK = {
-//   // The mapped type
-//   [K in keyof DataState as `set${Capitalize<K>}`]: (
-//     arg: DataState[K],
-//   ) => void
-// }
+type ArtMethodNames2 =
+  `paint${Capitalize<Colors>}${Capitalize<ArtFeatures>}`
 
-// function load(dataSDK: DataSDK) {
-//   dataSDK.setDigits([14])
-//   dataSDK.setFlags({ darkMode: true, mobile: false })
-// }
 
-/*
-// //? Extracting string literal types
+interface DataState {
+  digits: number[]
+  names: string[]
+  flags: Record<'darkMode' | 'mobile', boolean>
+}
 
-// const courseWebsite = 'Frontend Masters'
+type DataSDK = {
+  // The mapped type
+  [K in keyof DataState as `set${Capitalize<K>}`]: (
+    arg: DataState[K],
+  ) => void
+}
 
-// type ExtractMasterName<S> = S extends `${infer T} Masters` ? T : never
-// let fe: ExtractMasterName<typeof courseWebsite> = 'Backend'
+function load(dataSDK: DataSDK) {
+  dataSDK.setDigits([14])
+  dataSDK.setFlags({ darkMode: true, mobile: false })
+  dataSDK.setNames(['hello'])
+}
+
+
+//? Extracting string literal types
+
+const courseWebsite = 'Frontend Masters'
+
+type ExtractMasterName<S> = S extends `${infer T} Masters` ? T : never
+let fe: ExtractMasterName<typeof courseWebsite> = 'Backend'
 
 //* Filtering properties out
 /*
