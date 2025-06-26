@@ -10656,11 +10656,11 @@ __metadata:
   linkType: hard
 
 "express-rate-limit@npm:^7.1.1":
-  version: 7.1.3
-  resolution: "express-rate-limit@npm:7.1.3"
+  version: 7.5.1
+  resolution: "express-rate-limit@npm:7.5.1"
   peerDependencies:
-    express: 4 || 5 || ^5.0.0-beta.1
-  checksum: a56deb8e8b706810ec17ce54e8bcfb818b283b9059739a34e589f4cd28ae3b6c12b8aa19d4ab64333bebf9bf4ac41a2b4685021df066628418f248b7dfb70d94
+    express: ">= 4.11"
+  checksum: 544fdd576a846a7d3ed0203a011cec6d65ad8e5eab58dbe045a0bdefd119060c140c38b327e32713b56342cc901a3ca5c99f13cce4ceee08408e775ec4742c16
   languageName: node
   linkType: hard
 
